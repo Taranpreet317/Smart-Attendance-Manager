@@ -1,64 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Attendance Manager</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f7fa;
-      color: #222;
-      line-height: 1.6;
-      margin: 40px;
-    }
-    h1, h2, h3 {
-      color: #1976d2;
-    }
-    code, pre {
-      background-color: #eee;
-      border-radius: 6px;
-      padding: 10px;
-      display: block;
-      overflow-x: auto;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li::before {
-      content: "⚡ ";
-    }
-    .badge {
-      display: inline-block;
-      background-color: #1976d2;
-      color: white;
-      border-radius: 4px;
-      padding: 3px 8px;
-      margin-right: 5px;
-      font-size: 0.85rem;
-    }
-    .screenshot {
-      width: 250px;
-      border-radius: 8px;
-      margin: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .author {
-      margin-top: 30px;
-      background-color: #e3f2fd;
-      padding: 15px;
-      border-radius: 8px;
-    }
-    a {
-      color: #1976d2;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
+
 <body>
 
   <h1>📲 Smart Attendance Manager App</h1>
@@ -84,23 +26,19 @@
 
   <h2>🛠️ Tech Stack</h2>
   <p>
-    <span class="badge">Flutter</span>
-    <span class="badge">Dart</span>
-    <span class="badge">Firebase Auth</span>
-    <span class="badge">Cloud Firestore</span>
-    <span class="badge">QR Flutter</span>
-    <span class="badge">Mobile Scanner</span>
-    <span class="badge">Provider</span>
-    <span class="badge">Material Design</span>
+    <span class="badge">Flutter,</span>
+    <span class="badge">Dart,</span>
+    <span class="badge">Firebase Auth,</span>
+    <span class="badge">Cloud Firestore,</span>
+    <span class="badge">QR Flutter,</span>
+    <span class="badge">Mobile Scanner,</span>
+    <span class="badge">Provider,</span>
+    <span class="badge">Material Design,</span>
   </p>
 
   <hr>
 
-  <h2>📸 Screenshots</h2>
-  <img src="screenshots/login.png" alt="Login Screen" class="screenshot">
-  <img src="screenshots/teacher_dashboard.png" alt="Teacher Dashboard" class="screenshot">
-  <img src="screenshots/qr_scan.png" alt="QR Scan" class="screenshot">
-  <img src="screenshots/attendance_report.png" alt="Attendance Report" class="screenshot">
+  
 
   <hr>
 
@@ -166,8 +104,7 @@ service cloud.firestore {
     <h3>👨‍💻 Author</h3>
     <p><strong>Taranpreet Singh</strong><br>
     Flutter Developer | B.Tech CSE<br>
-    📧 <a href="mailto:youremail@example.com">youremail@example.com</a><br>
-    🔗 <a href="https://linkedin.com/in/your-link">LinkedIn</a> • <a href="https://github.com/yourusername">GitHub</a></p>
+    📧 <a href="taranpreetsingh1515@gmail.com">taranpreetsingh1515@gmail.com</a><br>
   </div>
 
   <p>⭐ If you like this project, give it a star on <a href="https://github.com/yourusername/smart_attendance_manager">GitHub</a>!</p>
