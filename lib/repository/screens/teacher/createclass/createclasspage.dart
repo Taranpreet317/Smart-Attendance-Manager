@@ -25,6 +25,18 @@ class _CreateclasspageState extends State<Createclasspage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 135, 66, 255),
+        foregroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Uihelper.CustomText(
+          text: "Create Class",
+          color: Colors.white,
+          fontweight: FontWeight.w500,
+          fontsize: 22,
+        ),
+      ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -110,6 +122,16 @@ class _CreateclasspageState extends State<Createclasspage> {
             Uihelper.CustomButton(
               text: "Create Class",
               onPressed: () async {
+                if (classnamecontroller.text.isEmpty ||
+                    classcodecontroller.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Please fill in all fields"),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                  return;
+                }
                 await Createclass(
                   teacherId: widget.teacherId,
                   className: classnamecontroller.text,

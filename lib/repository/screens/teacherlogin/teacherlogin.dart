@@ -183,11 +183,14 @@ class TeacherloginState extends State<Teacherlogin> {
                         .collection('users')
                         .doc(FirebaseAuth.instance.currentUser?.uid)
                         .get();
-                  String username = userDoc['username'] ?? "Unknown";
+                String username = userDoc['username'] ?? "Unknown";
                 if (flag && context.mounted && userDoc['role'] == 'Teacher') {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => Teacherdashboard(username:username)),
+                    MaterialPageRoute(
+                      builder:
+                          (context) => Teacherdashboard(username: username),
+                    ),
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(

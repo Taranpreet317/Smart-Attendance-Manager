@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:smart_attendance_manager/domain/constants/appcolors.dart';
+import 'package:smart_attendance_manager/repository/screens/splashscreen/splashscreen.dart';
 import 'package:smart_attendance_manager/repository/screens/student/classdetails/classdetailscreen.dart';
 import 'package:smart_attendance_manager/repository/screens/student/studentqrscanner/studentqrscanner.dart';
 import 'package:smart_attendance_manager/repository/widgets/uihelper.dart';
@@ -130,6 +131,52 @@ class _StudentDashboardState extends State<StudentDashboard> {
         });
   }
 
+  // Logout Functionality
+
+  Future<void> logout(BuildContext context) async {
+    // Show confirmation dialog
+    bool? confirmLogout = await showDialog<bool>(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text('Logout'),
+            content: Text('Are you sure you want to logout?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: Text('Logout', style: TextStyle(color: Colors.red)),
+              ),
+            ],
+          ),
+    );
+
+    if (confirmLogout == true) {
+      try {
+        // Sign out from Firebase
+        await FirebaseAuth.instance.signOut();
+
+        // Navigate to Splash Screen (which will redirect to Login)
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => SplashScreen()),
+          (route) => false, // Remove all previous routes
+        );
+      } catch (e) {
+        // Show error if logout fails
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Logout failed: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,8 +207,9 @@ class _StudentDashboardState extends State<StudentDashboard> {
               children: [
                 // Header
                 Container(
+                  height: 200,
                   decoration: Appcolors.Backroundgradient(),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                   width: double.infinity,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,12 +221,33 @@ class _StudentDashboardState extends State<StudentDashboard> {
                         fontweight: FontWeight.w400,
                         fontsize: 20,
                       ),
-                      SizedBox(height: 10),
-                      Uihelper.CustomText(
-                        text: username,
-                        color: Colors.white,
-                        fontweight: FontWeight.bold,
-                        fontsize: 30,
+                      // SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Uihelper.CustomText(
+                            text: username,
+                            color: Colors.white,
+                            fontweight: FontWeight.bold,
+                            fontsize: 30,
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 210,
+                              bottom: 30,
+                            ),
+                            child: IconButton(
+                              onPressed: () {
+                                logout(context);
+                              },
+                              icon: Icon(
+                                Icons.logout,
+                                color: Colors.white,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -191,7 +260,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                   child: Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: overallColor.withOpacity(0.1),
+                      color: overallColor.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Row(
@@ -272,7 +341,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                               Container(
                                 padding: EdgeInsets.all(15),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.3),
+                                  color: Colors.white.withValues(alpha: 0.3),
                                   shape: BoxShape.circle,
                                 ),
                                 child: Icon(
@@ -298,7 +367,9 @@ class _StudentDashboardState extends State<StudentDashboard> {
                                     Text(
                                       "Mark your attendance",
                                       style: TextStyle(
-                                        color: Colors.white.withOpacity(0.8),
+                                        color: Colors.white.withValues(
+                                          alpha: 0.8,
+                                        ),
                                         fontSize: 14,
                                       ),
                                     ),

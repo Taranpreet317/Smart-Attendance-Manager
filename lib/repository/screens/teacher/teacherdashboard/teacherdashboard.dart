@@ -5,9 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:qr_flutter/qr_flutter.dart';
 import 'package:smart_attendance_manager/domain/constants/appcolors.dart';
+import 'package:smart_attendance_manager/repository/screens/splashscreen/splashscreen.dart';
 // import 'package:smart_attendance_manager/repository/screens/teacher/createclass/createclass.dart';
 import 'package:smart_attendance_manager/repository/screens/teacher/createclass/createclasspage.dart';
 import 'package:smart_attendance_manager/repository/screens/teacher/sessionQR/sessionqrdialog.dart';
+import 'package:smart_attendance_manager/repository/screens/teacher/teacheranalytics/teacheranalytics.dart';
 import 'package:smart_attendance_manager/repository/widgets/uihelper.dart';
 
 class Teacherdashboard extends StatefulWidget {
@@ -66,6 +68,52 @@ class _TeacherdashboardState extends State<Teacherdashboard> {
     }
   }
 
+  // Logout functionality
+
+  Future<void> logout(BuildContext context) async {
+    // Show confirmation dialog
+    bool? confirmLogout = await showDialog<bool>(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text('Logout'),
+            content: Text('Are you sure you want to logout?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: Text('Logout', style: TextStyle(color: Colors.red)),
+              ),
+            ],
+          ),
+    );
+
+    if (confirmLogout == true) {
+      try {
+        // Sign out from Firebase
+        await FirebaseAuth.instance.signOut();
+
+        // Navigate to Splash Screen (which will redirect to Login)
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => SplashScreen()),
+          (route) => false, // Remove all previous routes
+        );
+      } catch (e) {
+        // Show error if logout fails
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Logout failed: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     String teacherId = FirebaseAuth.instance.currentUser!.uid;
@@ -76,8 +124,9 @@ class _TeacherdashboardState extends State<Teacherdashboard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              height: 200,
               decoration: Appcolors.Backroundgradient(),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,11 +139,29 @@ class _TeacherdashboardState extends State<Teacherdashboard> {
                     fontsize: 20,
                   ),
                   SizedBox(height: 10),
-                  Uihelper.CustomText(
-                    text: username,
-                    color: Colors.white,
-                    fontweight: FontWeight.bold,
-                    fontsize: 30,
+                  Row(
+                    children: [
+                      Uihelper.CustomText(
+                        text: username,
+                        color: Colors.white,
+                        fontweight: FontWeight.bold,
+                        fontsize: 30,
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(left: 210, bottom: 30),
+                        child: IconButton(
+                          onPressed: () {
+                            logout(context);
+                          },
+                          icon: Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
 
                   // Add more widgets here for the dashboard content
@@ -146,7 +213,14 @@ class _TeacherdashboardState extends State<Teacherdashboard> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TeacherAnalytics(),
+                          ),
+                        );
+                      },
                       child: Uihelper.CustomContainer(
                         icon: Icons.analytics,
                         text1: "Analytics",
@@ -333,10 +407,10 @@ class _TeacherdashboardState extends State<Teacherdashboard> {
                                 context: context,
                                 builder:
                                     (context) => Sessionqrdialog(
-                                      sessionData:sessionData,
-                                      qrData:qrData,
-                                      className:classData['className'],
-                                    )
+                                      sessionData: sessionData,
+                                      qrData: qrData,
+                                      className: classData['className'],
+                                    ),
                               );
                             },
                             icon: Icon(Icons.qr_code),
