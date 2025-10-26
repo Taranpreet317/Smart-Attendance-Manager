@@ -24,6 +24,15 @@
 
   <hr>
 
+  <h2>🎥 Demo Video</h2>
+  <p>
+    👉 <a href="https://drive.google.com/file/d/1KPxovg_DiCP2bZPrcyDAteDYWFWJgwXD/view?usp=drivesdk" target="_blank">
+      Watch the Demo Video on Google Drive
+    </a>
+  </p>
+
+  <hr>
+
   <h2>🛠️ Tech Stack</h2>
   <p>
     <span class="badge">Flutter,</span>
@@ -35,10 +44,6 @@
     <span class="badge">Provider,</span>
     <span class="badge">Material Design,</span>
   </p>
-
-  <hr>
-
-  
 
   <hr>
 
