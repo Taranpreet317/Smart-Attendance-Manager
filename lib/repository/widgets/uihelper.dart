@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:smart_attendance_manager/domain/constants/appcolors.dart';
+
 
 class Uihelper {
   static CustomText({
