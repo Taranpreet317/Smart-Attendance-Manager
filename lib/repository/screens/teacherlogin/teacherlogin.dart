@@ -42,32 +42,7 @@ class TeacherloginState extends State<Teacherlogin> {
             ),
             SizedBox(height: 20),
 
-            // Container(
-            //   height: 70,
-            //   width: 370,
-            //   child: TextField(
-            //     style: TextStyle(color: Colors.white),
-            //     controller: t_emailController,
-            //     keyboardType: TextInputType.emailAddress,
-            //     decoration: InputDecoration(
-            //       filled: true,
-            //       fillColor: Color.fromARGB(255, 221, 217, 231).withAlpha(35),
-            //       hintText: " Enter your email",
-            //       border: OutlineInputBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //       ),
-            //       focusedBorder: OutlineInputBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //         borderSide: BorderSide(color: Colors.white),
-            //       ),
-            //       enabledBorder: OutlineInputBorder(
-            //         borderSide: BorderSide.none,
-            //       ),
-            //       hintStyle: TextStyle(color: Colors.white),
-            //       prefixIcon: Icon(Icons.email, color: Colors.white),
-            //     ),
-            //   ),
-            // ),
+           
             Container(
               height: 70,
               width: 370,
@@ -85,44 +60,7 @@ class TeacherloginState extends State<Teacherlogin> {
             ),
             SizedBox(height: 15),
 
-            // Container(
-            //   height: 70,
-            //   width: 370,
-            //   child: TextField(
-            //     style: TextStyle(color: Colors.white),
-            //     controller: t_passwordController,
-            //     obscureText: _isobsecure,
-            //     decoration: InputDecoration(
-            //       filled: true,
-            //       fillColor: Color.fromARGB(255, 221, 217, 231).withAlpha(35),
-            //       hintText: " Enter your password",
-            //       border: OutlineInputBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //       ),
-            //       focusedBorder: OutlineInputBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //         borderSide: BorderSide(color: Colors.white),
-            //       ),
-            //       enabledBorder: OutlineInputBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //         borderSide: BorderSide.none,
-            //       ),
-            //       hintStyle: TextStyle(color: Colors.white),
-            //       prefixIcon: Icon(Icons.lock, color: Colors.white),
-            //       suffixIcon: IconButton(
-            //         icon: Icon(
-            //           _isobsecure ? Icons.visibility_off : Icons.visibility,
-            //           color: Colors.white,
-            //         ),
-            //         onPressed: () {
-            //           setState(() {
-            //             _isobsecure = !_isobsecure;
-            //           });
-            //         },
-            //       ),
-            //     ),
-            //   ),
-            // ),
+          
             Container(
               height: 70,
               width: 370,
@@ -152,24 +90,7 @@ class TeacherloginState extends State<Teacherlogin> {
             ),
             SizedBox(height: 25),
 
-            // Container(
-            //   height: 70,
-            //   width: 370,
-            //   child: Uihelper.CustomTextField(
-            //     controller: t_passwordController,
-            //     hintText: "Enter your password",
-            //     textColor: Colors.white,
-            //     fillColor: Color.fromARGB(255, 221, 217, 231).withAlpha(35),
-            //     borderRadius: 15,
-            //     hintStyle: Colors.white,
-            //     prefixIcon: Icon(Icons.lock,color: Colors.white,),
-            //     suffixIcon: IconButton(onPressed: (){
-            //       setState(() {
-            //         _isobsecure=!_isobsecure;
-            //       });
-            //     }, icon:_isobsecure? Icons.visibility:Icons.visibility_off ),
-            //   ),
-            // ),
+           
             Uihelper.CustomButton(
               text: "Log In",
               onPressed: () async {
