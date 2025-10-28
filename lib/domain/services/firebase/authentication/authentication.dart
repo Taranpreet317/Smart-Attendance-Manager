@@ -20,9 +20,8 @@ class Authentication {
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .set({
             'username': usernameController.text.trim(),
-            // 'email': emailController.text.trim(),
+            
             'role': role,
-            // 'uid': FirebaseAuth.instance.currentUser?.uid,
           });
       return true;
     } on FirebaseAuthException catch (e) {
