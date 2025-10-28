@@ -135,7 +135,7 @@ class Classdetailscreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
-        // color: color.withOpacity(0.1),
+
         color: color.withAlpha(30),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: color.withAlpha(50)),
