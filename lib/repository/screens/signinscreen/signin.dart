@@ -84,7 +84,7 @@ class SigninState extends State<Signin> {
             ),
             SizedBox(height: 15),
             Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
+              
               children: [
                 SizedBox(width: 30),
                 Uihelper.CustomText(
@@ -100,40 +100,7 @@ class SigninState extends State<Signin> {
               children: [
                 SizedBox(width: 30),
 
-                // SizedBox(
-                //   height: 60,
-                //   width: 150,
-                //   child: ElevatedButton(
-                //     onPressed: () {
-                //       setState(() {
-                //         _selected = !_selected;
-                //       });
-                //     },
-                //     style: ElevatedButton.styleFrom(
-                //       backgroundColor:
-                //           _selected
-                //               ? Color.fromARGB(255, 230, 229, 232).withAlpha(50)
-                //               : Colors.white,
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(20),
-                //       ),
-                //     ),
-                //     child: Row(
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         Icon(Icons.person, color: Colors.white),
-                //         SizedBox(width: 10),
-                //         Uihelper.CustomText(
-                //           text: "Student",
-                //           color: const Color.fromARGB(142, 241, 239, 239),
-                //           fontweight: FontWeight.w400,
-                //           fontsize: 15,
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                //
+              
                 InkWell(
                   onTap: () {
                     setState(() {
@@ -295,7 +262,7 @@ class SigninState extends State<Signin> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      // margin: EdgeInsets.all(16),
+                     
                     ),
                   );
                 } else {
@@ -321,7 +288,7 @@ class SigninState extends State<Signin> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        // margin: EdgeInsets.all(16),
+                        
                       ),
                     );
                     Navigator.pop(
