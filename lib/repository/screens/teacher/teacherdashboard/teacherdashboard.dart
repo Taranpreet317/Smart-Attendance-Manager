@@ -164,7 +164,7 @@ class _TeacherdashboardState extends State<Teacherdashboard> {
                     ],
                   ),
 
-                  // Add more widgets here for the dashboard content
+                  
                 ],
               ),
             ),
@@ -185,7 +185,7 @@ class _TeacherdashboardState extends State<Teacherdashboard> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: InkWell(
-                      // behavior: HitTestBehavior.opaque,
+                     
                       onTap: () {
                         Navigator.push(
                           context,
@@ -415,7 +415,7 @@ class _TeacherdashboardState extends State<Teacherdashboard> {
                             },
                             icon: Icon(Icons.qr_code),
                           ),
-                          // trailing: Text(classData['status'] ?? "Unknown"),
+                        
                         ),
                       ),
                     );
