@@ -24,73 +24,60 @@ class _StudentDashboardState extends State<StudentDashboard> {
   void initState() {
     super.initState();
     username = widget.username;
-    print("🚀 StudentDashboard initState");
-    print("Username: $username");
-    print("Student ID: $studentId");
+    
   }
 
   Stream<List<Map<String, dynamic>>> getEnrolledClasses() {
-    print("🔥 getEnrolledClasses() CALLED");
+   
     return FirebaseFirestore.instance
         .collectionGroup('enrolledStudents')
         .where('studentId', isEqualTo: studentId)
         .snapshots()
         .asyncMap((snapshot) async {
-          print("=== DEBUG START ===");
-          print("📦 Snapshot received");
-          print("Student ID: $studentId");
-          print("Snapshot docs count: ${snapshot.docs.length}");
-
+         
           List<Map<String, dynamic>> classes = [];
 
           for (var doc in snapshot.docs) {
-            print("\n--- Processing enrollment ---");
-            print("Doc ID: ${doc.id}");
-            print("Doc path: ${doc.reference.path}");
-            print("Doc data: ${doc.data()}");
-
+           
             // Get the class reference
             var classRef = doc.reference.parent.parent;
-            print("Class ref path: ${classRef?.path}");
+          
 
-            if (classRef == null) {
-              print("ERROR: classRef is null!");
-              continue;
-            }
+            // if (classRef == null) {
+            //   print("ERROR: classRef is null!");
+            //   continue;
+            // }
 
             var classDoc = await classRef.get();
-            print("Class doc exists: ${classDoc.exists}");
-
-            if (!classDoc.exists) {
-              print("ERROR: Class document doesn't exist!");
-              continue;
-            }
+          
+            // if (!classDoc.exists) {
+            //   print("ERROR: Class document doesn't exist!");
+            //   continue;
+            // }
 
             Map<String, dynamic> classData =
                 classDoc.data() as Map<String, dynamic>;
-            print("Class data: $classData");
-
+            
             // Get teacher info
             var teacherRef = classRef.parent.parent;
-            print("Teacher ref path: ${teacherRef?.path}");
+            
 
-            if (teacherRef == null) {
-              print("ERROR: teacherRef is null!");
-              continue;
-            }
+            // if (teacherRef == null) {
+            //   print("ERROR: teacherRef is null!");
+            //   continue;
+            // }
 
             var teacherDoc = await teacherRef.get();
-            print("Teacher doc exists: ${teacherDoc.exists}");
+           
 
             Map<String, dynamic> teacherData =
                 teacherDoc.data() as Map<String, dynamic>;
-            print("Teacher data: $teacherData");
+            
 
             // Count total sessions
             var sessionsSnapshot = await classRef.collection('sessions').get();
             int totalSessions = sessionsSnapshot.docs.length;
-            print("Total sessions: $totalSessions");
-
+        
             // Count attended sessions
             int attendedSessions = 0;
             for (var sessionDoc in sessionsSnapshot.docs) {
@@ -103,8 +90,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                 attendedSessions++;
               }
             }
-            print("Attended sessions: $attendedSessions");
-
+          
             // Calculate attendance percentage
             double attendancePercentage =
                 totalSessions > 0
@@ -123,10 +109,9 @@ class _StudentDashboardState extends State<StudentDashboard> {
               'enrolledAt': doc.data()['enrolledAt'],
             });
 
-            print("Class added successfully!");
+          
           }
-          print("\n=== DEBUG END ===");
-          print("Total classes fetched: ${classes.length}");
+        
           return classes;
         });
   }
