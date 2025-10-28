@@ -14,7 +14,6 @@ class LoginscreenState extends State<Loginscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Appcolors.scaffoldBackground,
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -36,7 +35,7 @@ class LoginscreenState extends State<Loginscreen> {
               ),
             ),
 
-            // SizedBox(height: 10),
+           
             Container(
               child: Padding(
                 padding: EdgeInsets.only(bottom: 20),
@@ -50,33 +49,7 @@ class LoginscreenState extends State<Loginscreen> {
             ),
 
             SizedBox(height: 100),
-            // SizedBox(
-            //   height: 50,
-            //   width: 300,
-            //   child: ElevatedButton(
-            //     onPressed: () {},
-            //     style: ElevatedButton.styleFrom(
-            //       backgroundColor: const Color.fromARGB(
-            //         255,
-            //         242,
-            //         226,
-            //         226,
-            //       ).withAlpha(180),
-            //       // foregroundColor: Colors.white,
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(10),
-            //       ),
-            //     ),
-            //     child: Text(
-            //       "Teacher Login",
-            //       style: TextStyle(
-            //         color: Appcolors.scaffoldBackground,
-            //         // fontWeight: FontWeight.bold,
-            //         fontSize: 17,
-            //       ),
-            //     ),
-            //   ),
-            // ),
+          
             Uihelper.CustomButton(
               text: "Teacher Login",
               onPressed: () {
