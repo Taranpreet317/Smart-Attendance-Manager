@@ -22,20 +22,20 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _checkAuthStatus() async {
-    // Wait 2 seconds to show splash screen
+   
     await Future.delayed(Duration(seconds: 2));
 
-    // Check if user is logged in
+   
     User? currentUser = FirebaseAuth.instance.currentUser;
 
     if (currentUser == null) {
-      // No user logged in → Go to Login Screen
+      
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Loginscreen()),
       );
     } else {
-      // User is logged in → Check their role
+     
       try {
         DocumentSnapshot userDoc =
             await FirebaseFirestore.instance
@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
           String username = userData['username'] ?? 'User';
 
           if (role == 'Teacher') {
-            // Navigate to Teacher Dashboard
+           
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             );
           } else if (role == 'Student') {
-            // Navigate to Student Dashboard
+          
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -66,14 +66,14 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             );
           } else {
-            // Unknown role → Go to Login Screen
+           
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => Loginscreen()),
             );
           }
         } else {
-          // User document doesn't exist → Go to Login Screen
+          
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => Loginscreen()),
@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       } catch (e) {
         print('Error checking user role: $e');
-        // Error occurred → Go to Login Screen
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => Loginscreen()),
@@ -100,10 +100,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // App Logo or Icon
+            
             Icon(Icons.qr_code_scanner, size: 120, color: Colors.white),
             SizedBox(height: 30),
-            // App Name
+            
             Text(
               'Smart Attendance',
               style: TextStyle(
@@ -123,7 +123,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             SizedBox(height: 50),
-            // Loading indicator
+        
             CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             ),
